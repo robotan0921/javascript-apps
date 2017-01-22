@@ -1,0 +1,33 @@
+{
+  "name": "hubot",
+  "description": "Simple slack bot using Hubot framework.",
+  "version": "2.19.0",
+  "author": "cloud-hackathon",
+  "license": "MIT",
+  "private": true,
+  "keywords": [
+    "bot",
+    "hubot",
+    "slack"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-hackathon/javascript-apps.git"
+  },
+  "dependencies": {
+    "easy-table": ">= 1.0.x",
+    "hubot": ">= 2.19.x",
+    "hubot-redis-brain": ">= 0.0.x",
+    "hubot-slack": ">= 4.2.x"
+  },
+  "devDependencies": {
+    "coffee-script": ">= 1.11.x"
+  },
+  "engines": {
+    "node": ">= 7.4.x",
+    "npm": ">= 4.0.x"
+  },
+  "scripts": {
+    "start": "hubot -a slack -n Hubot"
+  }
+}

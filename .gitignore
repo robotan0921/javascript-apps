@@ -1,0 +1,7 @@
+*~
+.*.swp
+*#*
+.DS_Store
+/slack-bot/node_modules
+/slack-bot/npm-debug.log
+/slack-bot/.hubot_history
