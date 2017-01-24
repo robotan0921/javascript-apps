@@ -1,5 +1,7 @@
 # Simple bot application
 
+![screenshot](./screenshot.png)
+
 ## Getting started
 
 1. Visit [App Directory](https://my.slack.com/apps/A0F7XDU93-hubot) to register your bot and get API token
