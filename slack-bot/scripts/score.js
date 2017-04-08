@@ -19,15 +19,14 @@ module.exports = function(robot) {
     msg.send(" 目覚ましを " + time + " にセットしました ");
   });
 
-  var job = new cronJob(
-    cronTime: '*/10 * * * * *'
-    ,
+  var job = new cronJob({
+    cronTime: '*/10 * * * * *',
     onTick: function(msg) {
       msg.send("@here そろそろ帰る準備をしよう");
     },
     start: true, //newした後即時実行するかどうか
     timeZone: 'Japan/Tokyo'
-  ).start();
+  }).start();
 
   robot.hear(/(.+)\s*--$/i, function(msg) {
     var user = msg.match[1].trim();
