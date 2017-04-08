@@ -24,7 +24,7 @@ module.exports = function(robot) {
     onTick: function(msg) {
       msg.send("@here そろそろ帰る準備をしよう");
     },
-    start: true, //newした後即時実行するかどうか
+    // start: true, //newした後即時実行するかどうか
     timeZone: 'Japan/Tokyo'
   }).start();
 
@@ -76,7 +76,6 @@ module.exports = function(robot) {
   };
 
   var setTime = function(time) {
-    var  = getScores();
 
     scores[user] = score;
     robot.brain.set('scores', scores);
