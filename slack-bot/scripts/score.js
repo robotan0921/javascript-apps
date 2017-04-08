@@ -27,9 +27,12 @@ module.exports = function(robot) {
       "5 * * * * *"
     },
     onTick: function(msg) {
-      msg.send("@here そろそろ帰る準備をしよう");
-    }
-  ).start();
+      msg.send("@here Test");
+    },
+    // start: true, //newした後即時実行するかどうか
+    // timeZone: 'Japan/Tokyo'
+  });
+  job.start();
 
   robot.hear(/(.+)\s*--$/i, function(msg) {
     var user = msg.match[1].trim();
@@ -79,7 +82,6 @@ module.exports = function(robot) {
   };
 
   var setTime = function(time) {
-    var  = getScores();
 
     scores[user] = score;
     robot.brain.set('scores', scores);
