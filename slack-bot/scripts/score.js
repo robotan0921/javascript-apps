@@ -17,10 +17,15 @@ module.exports = function(robot) {
     setTime(time);
 
     msg.send(" 目覚ましを " + time + " にセットしました ");
+    msg.send(" 目覚ましを " + time + " にセットしました ");
+    msg.send(" 目覚ましを " + time + " にセットしました ");
   });
 
-  var job = new cronJob({
-    cronTime: '*/10 * * * * *',
+
+  var job = new cronJob(
+    cronTime: {
+      "5 * * * * *"
+    },
     onTick: function(msg) {
       msg.send("@here Test");
     },
