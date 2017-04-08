@@ -17,8 +17,6 @@ module.exports = function(robot) {
     setTime(time);
 
     msg.send(" 目覚ましを " + time + " にセットしました ");
-    msg.send(" 目覚ましを " + time + " にセットしました ");
-    msg.send(" 目覚ましを " + time + " にセットしました ");
   });
 
 
