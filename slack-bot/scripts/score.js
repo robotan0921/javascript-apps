@@ -1,87 +1,87 @@
-// Description:
-//   Hubotのhelpコマンドを生成
-//
-// Commands:
-//   hubot <user> ++ - ユーザのスコアをインクリメント
-//   hubot <user> -- - ユーザのスコアをデクリメント
-//   hubot score     - スコアのランキングを表示
+// // Description:
+// //   Hubotのhelpコマンドを生成
+// //
+// // Commands:
+// //   hubot <user> ++ - ユーザのスコアをインクリメント
+// //   hubot <user> -- - ユーザのスコアをデクリメント
+// //   hubot score     - スコアのランキングを表示
 
-var table = require('easy-table');
-var cronJob = require('cron').CronJob;
+// var table = require('easy-table');
+// var cronJob = require('cron').CronJob;
 
-module.exports = function(robot) {
-  var NIL_MSG = '結果はありません。';
+// module.exports = function(robot) {
+//   var NIL_MSG = '結果はありません。';
 
-  robot.hear(/set\s*(\d[:]\d\d)$/i, function(msg) {
-    var time = msg.match[1].trim();
-    // setTime(time);
+//   robot.hear(/set\s*(\d[:]\d\d)$/i, function(msg) {
+//     var time = msg.match[1].trim();
+//     // setTime(time);
 
-    msg.send(" 目覚ましを " + time + " にセットしました ");
-  });
+//     msg.send(" 目覚ましを " + time + " にセットしました ");
+//   });
 
-  // var task = cron.schedule('*/10 * * * *', function() {
-  //   robot.send("@here Test");
-  // }, false);
+//   // var task = cron.schedule('*/10 * * * *', function() {
+//   //   robot.send("@here Test");
+//   // }, false);
 
-  // task.start();
+//   // task.start();
 
 
-  new cronJob('5 * * * * *', function() {
-      send("@here Test");
-    }, null, true, null
-  );
-  // job.start();
+//   new cronJob('5 * * * * *', function() {
+//       send("@here Test");
+//     }, null, true, null
+//   );
+//   // job.start();
 
-  // robot.hear(/(.+)\s*--$/i, function(msg) {
-  //   var user = msg.match[1].trim();
-  //   var scores = getScores();
-  //   var score = (scores[user] != null ? scores[user] : 0) - 1;
+//   // robot.hear(/(.+)\s*--$/i, function(msg) {
+//   //   var user = msg.match[1].trim();
+//   //   var scores = getScores();
+//   //   var score = (scores[user] != null ? scores[user] : 0) - 1;
 
-  //   score = score < 0 ? 0 : score;
-  //   setScore(user, score);
-  //   msg.send(user + " さんのスコアが " + score + " になりました!");
-  // });
+//   //   score = score < 0 ? 0 : score;
+//   //   setScore(user, score);
+//   //   msg.send(user + " さんのスコアが " + score + " になりました!");
+//   // });
 
-  // robot.respond(/score$/i, function(msg) {
-  //   var scores = getScores();
-  //   var results = [];
-  //   var t = new table;
+//   // robot.respond(/score$/i, function(msg) {
+//   //   var scores = getScores();
+//   //   var results = [];
+//   //   var t = new table;
 
-  //   for (user in scores) {
-  //     results.push({
-  //       user: user,
-  //       score: scores[user]
-  //     });
-  //   }
+//   //   for (user in scores) {
+//   //     results.push({
+//   //       user: user,
+//   //       score: scores[user]
+//   //     });
+//   //   }
 
-  //   results.sort(function(a, b) {
-  //     if (a.score > b.score) { return -1; }
-  //     if (a.score < b.score) { return 1; }
-  //     return 0;
-  //   });
+//   //   results.sort(function(a, b) {
+//   //     if (a.score > b.score) { return -1; }
+//   //     if (a.score < b.score) { return 1; }
+//   //     return 0;
+//   //   });
 
-  //   results.forEach(function(result, _) {
-  //     t.cell('User', result.user);
-  //     t.cell('Score', result.score);
-  //     t.newRow();
-  //   });
+//   //   results.forEach(function(result, _) {
+//   //     t.cell('User', result.user);
+//   //     t.cell('Score', result.score);
+//   //     t.newRow();
+//   //   });
 
-  //   if (t.rows.length > 0) {
-  //     return msg.reply("```\n" + (t.print().trim()) + "\n```");
-  //   }
+//   //   if (t.rows.length > 0) {
+//   //     return msg.reply("```\n" + (t.print().trim()) + "\n```");
+//   //   }
 
-  //   msg.reply(NIL_MSG);
-  // });
+//   //   msg.reply(NIL_MSG);
+//   // });
 
-  // var getScores = function() {
-  //   var scores = robot.brain.get('scores')
+//   // var getScores = function() {
+//   //   var scores = robot.brain.get('scores')
 
-  //   return scores != null ? scores : {};
-  // };
+//   //   return scores != null ? scores : {};
+//   // };
 
-  // var setTime = function(time) {
+//   // var setTime = function(time) {
 
-  //   scores[user] = score;
-  //   robot.brain.set('scores', scores);
-  // };
-};
+//   //   scores[user] = score;
+//   //   robot.brain.set('scores', scores);
+//   // };
+// };

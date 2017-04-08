@@ -7,6 +7,13 @@ module.exports = (robot) ->
   send = (channel, msg) ->
     robot.send {room: channel}, msg
 
+
+  robot.hear(/set\s*(\d[:]\d\d)$/i, (msg) ->
+    var time = msg.match[1].trim()
+    # setTime(time)
+    send '#team-mezamashi', " 目覚ましを " + time + " にセットしました "
+
+
   # Crontabの設定方法と基本一緒 *(sec) *(min) *(hour) *(day) *(month) *(day of the week)
   # #your_channelと言う部屋に、平日の18:30時に実行
   new cronJob('5 * * * * *', () ->
