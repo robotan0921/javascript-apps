@@ -19,9 +19,12 @@ module.exports = function(robot) {
     msg.send(" 目覚ましを " + time + " にセットしました ");
   });
 
-  cron.schedule('*/10 * * * *', function(){
+  var task = cron.schedule('*/10 * * * *', function() {
     robot.send("@here Test");
-  });
+  }, false);
+
+  task.start();
+
 
   // var job = new cronJob({
   //   cronTime: '*/10 * * * * *',
