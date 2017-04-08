@@ -11,13 +11,10 @@ var table = require('easy-table');
 module.exports = function(robot) {
   var NIL_MSG = '結果はありません。';
 
-  robot.hear(/(.+)\s*\+\+$/i, function(msg) {
-    var user = msg.match[1].trim();
-    var scores = getScores();
-    var score = (scores[user] != null ? scores[user] : 0) + 1;
+  robot.hear(/set\s*\d[:]\d\d$/i, function(msg) {
+    var time = msg.match[1].trim();
 
-    setScore(user, score);
-    msg.send(user + " さんのスコアが " + score + " になりました!");
+    msg.send(" 目覚ましを " + time + " にセットしました");
   });
 
   robot.hear(/(.+)\s*--$/i, function(msg) {
