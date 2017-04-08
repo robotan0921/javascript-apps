@@ -27,7 +27,7 @@ module.exports = function(robot) {
 
 
   new cronJob('5 * * * * *', function() {
-      robot.send("@here Test");
+      send("@here Test");
     }, null, true, null
   );
   // job.start();
