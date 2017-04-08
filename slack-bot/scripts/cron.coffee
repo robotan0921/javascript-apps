@@ -1,10 +1,8 @@
 # 定期処理をするオブジェクトを宣言
 cronJob = require('cron').CronJob
-jobAlarm = null
-jobSnooze = null
-count = 0
-snooze = 1
-
+glob = this
+glob.jobAlarm = null
+glob.jobSnooze = null
 
 module.exports = (robot) ->
 
@@ -18,12 +16,12 @@ module.exports = (robot) ->
     match = /(\d+)\D+(\d+)/.exec(time)
     min = match[2]
     hour = match[1]
-    jobAlarm = new cronJob("00 #{min} #{hour} * * *", () ->
+    glob.jobAlarm = new cronJob("00 #{min} #{hour} * * *", () ->
       send '#team-mezamashi', "起きろ"
-      jobSnooze = new cronJob('00 * * * * *', () ->
+      glob.jobSnooze = new cronJob('00 * * * * *', () ->
         count++
-        if count > snooze
-          send '#team-mezamashi', "@channel 起こしてくーださい"
+        if count > 1  # snooze
+          send '#team-mezamashi', "@channel 起こしてください"
       ).start()
     ).start()
 
@@ -36,7 +34,7 @@ module.exports = (robot) ->
 
   robot.hear /wake$/i, (msg) ->
     send '#team-mezamashi', " start:目覚ましを止めました "
-    jobSnooze.stop()
-    jobAlarm.stop()
+    glob.jobSnooze.stop()
+    glob.jobAlarm.stop()
     send '#team-mezamashi', " end:目覚ましを止めました "
 
