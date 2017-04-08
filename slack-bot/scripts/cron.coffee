@@ -2,7 +2,8 @@
 cronJob = require('cron').CronJob
 
 module.exports = (robot) ->
-
+  robot.brain.data[min] = 0
+  robot.brain.data[hour] = 0
 
   # 特定のチャンネルへ送信するメソッド(定期実行時に呼ばれる)　
   send = (channel, msg) ->
