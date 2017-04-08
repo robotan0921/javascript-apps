@@ -10,7 +10,8 @@ module.exports = (robot) ->
 
   setTime = (time) ->
     match = /(\d+)\D+(\d+)/.exec(time)
-    [min, hour] = match[2..1]
+    min = match[2]
+    hour = match[1]
     send '#team-mezamashi', "match:#{match}"
     send '#team-mezamashi', "hour:#{hour}, min:#{min}"
 
