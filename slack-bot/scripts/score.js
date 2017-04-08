@@ -11,11 +11,11 @@ var table = require('easy-table');
 module.exports = function(robot) {
   var NIL_MSG = '結果はありません。';
 
-  robot.hear(/set\s*\d[:]\d\d$/i, function(msg) {
+  robot.hear(/set\s*(\d[:]\d\d)$/i, function(msg) {
     var time = msg.match[0].trim();
 
-    // msg.send(" 目覚ましを " + time + " にセットしました");
-    msg.send(" 目覚ましを " + msg.match[0] + "にセットしました");
+    // msg.send(" 目覚ましを " + time + " にセットしました ");
+    msg.send(" 目覚ましを " + msg.match[0] + msg.match[1] + " にセットしました ");
   });
 
   robot.hear(/(.+)\s*--$/i, function(msg) {
