@@ -14,7 +14,6 @@ module.exports = function(robot) {
   robot.hear(/set\s*(\d[:]\d\d)$/i, function(msg) {
     var time = msg.match[1].trim();
 
-    // msg.send(" 目覚ましを " + time + " にセットしました ");
     msg.send(" 目覚ましを " + time + " にセットしました ");
   });
 
