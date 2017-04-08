@@ -16,22 +16,14 @@ module.exports = (robot) ->
     match = /(\d+)\D+(\d+)/.exec(time)
     min = match[2]
     hour = match[1]
-    glob.jobAlarm = new cronJob(
-      cronTime: "00 #{min} #{hour} * * *"
-      onTick: () ->
-        send '#team-mezamashi', "起きろ"
-        glob.jobSnooze = new cronJob(
-          cronTime: '00 * * * * *'
-          onTick: () ->
-            count++
-            if count > 1  # snooze
-              send '#team-mezamashi', "@channel 起こしてください"
-          start: false
-        )
-      start: false
-    )
-    glob.jobAlarm.start()
-    glob.jobSnooze.start()
+    glob.jobAlarm = new cronJob("00 #{min} #{hour} * * *", () ->
+      send '#team-mezamashi', "起きろ"
+      glob.jobSnooze = new cronJob('00 * * * * *', () ->
+        count++
+        if count > 1  # snooze
+          send '#team-mezamashi', "@channel 起こしてくーださい"
+      ).start()
+    ).start()
 
 
   robot.hear /set\s*([0-2][0-9][:][0-5][0-9])$/i, (msg) ->
@@ -41,8 +33,7 @@ module.exports = (robot) ->
 
 
   robot.hear /wake$/i, (msg) ->
-    send '#team-mezamashi', " start:目覚ましを止めました "
     glob.jobSnooze.stop()
     glob.jobAlarm.stop()
-    send '#team-mezamashi', " end:目覚ましを止めました "
+    send '#team-mezamashi', " 目覚ましを止めました "
 
