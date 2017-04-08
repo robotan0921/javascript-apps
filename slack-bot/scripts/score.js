@@ -12,9 +12,10 @@ module.exports = function(robot) {
   var NIL_MSG = '結果はありません。';
 
   robot.hear(/set\s*\d[:]\d\d$/i, function(msg) {
-    var time = msg.match[2].trim();
+    // var time = msg.match[2].trim();
 
-    msg.send(" 目覚ましを " + time + " にセットしました");
+    // msg.send(" 目覚ましを " + time + " にセットしました");
+    msg.send(" 目覚ましを にセットしました");
   });
 
   robot.hear(/(.+)\s*--$/i, function(msg) {
