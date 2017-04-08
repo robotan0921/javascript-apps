@@ -8,8 +8,8 @@ module.exports = (robot) ->
     robot.send {room: channel}, msg
 
 
-  robot.hear(/set\s*(\d[:]\d\d)$/i, (msg) ->
-    var time = msg.match[1].trim()
+  robot.hear /set\s*(\d[:]\d\d)$/i, (msg) ->
+    time = msg.match[1].trim()
     # setTime(time)
     send '#team-mezamashi', " 目覚ましを " + time + " にセットしました "
 
