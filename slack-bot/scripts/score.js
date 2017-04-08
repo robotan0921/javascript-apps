@@ -7,7 +7,7 @@
 //   hubot score     - スコアのランキングを表示
 
 var table = require('easy-table');
-var cronJob = require('cron').cronJob;
+var cronJob = require('cron').CronJob;
 
 module.exports = function(robot) {
   var NIL_MSG = '結果はありません。';
