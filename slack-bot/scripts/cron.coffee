@@ -14,7 +14,7 @@ module.exports = (robot) ->
     match = /(\d+)\D+(\d+)/.exec(time)
     min = match[2]
     hour = match[1]
-    job = new cronJob("00 #{match} #{robot.brain.get hour} * * *", () ->
+    job = new cronJob("00 #{min} #{hour} * * *", () ->
       send '#team-mezamashi', "@here そろそろ帰る準備をしよう"
     ).start()
     send '#team-mezamashi', "match:#{match}"
