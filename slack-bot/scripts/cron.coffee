@@ -36,7 +36,7 @@ module.exports = (robot) ->
 
   robot.hear /wake$/i, (msg) ->
     send '#team-mezamashi', " start:目覚ましを止めました "
-    jobAlarm.stop()
     jobSnooze.stop()
+    jobAlarm.stop()
     send '#team-mezamashi', " end:目覚ましを止めました "
 
