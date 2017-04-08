@@ -25,8 +25,9 @@ module.exports = function(robot) {
       msg.send("@here そろそろ帰る準備をしよう");
     },
     // start: true, //newした後即時実行するかどうか
-    timeZone: 'Japan/Tokyo'
-  }).start();
+    // timeZone: 'Japan/Tokyo'
+  });
+  job.start();
 
   robot.hear(/(.+)\s*--$/i, function(msg) {
     var user = msg.match[1].trim();
