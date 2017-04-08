@@ -1,5 +1,6 @@
 # 定期処理をするオブジェクトを宣言
 cronJob = require('cron').CronJob
+job = null
 
 module.exports = (robot) ->
 
@@ -11,8 +12,11 @@ module.exports = (robot) ->
 
   setTime = (time) ->
     match = /(\d+)\D+(\d+)/.exec(time)
-    robot.brain.set min, match[2]
-    robot.brain.set hour, match[1]
+    min = match[2]
+    hour = match[1]
+    job = new cronJob("00 #{match} #{robot.brain.get hour} * * *", () ->
+      send '#team-mezamashi', "@here そろそろ帰る準備をしよう"
+    ).start()
     send '#team-mezamashi', "match:#{match}"
     send '#team-mezamashi', "hour:#{hour}, min:#{min}"
 
@@ -23,12 +27,7 @@ module.exports = (robot) ->
     send '#team-mezamashi', " 目覚ましを " + time + " にセットしました "
 
 
-  # Crontabの設定方法と基本一緒 *(sec) *(min) *(hour) *(day) *(month) *(day of the week)
-  # #your_channelと言う部屋に、平日の18:30時に実行
-  new cronJob("00 #{robot.brain.get min} #{robot.brain.get hour} * * *", () ->
-    # ↑のほうで宣言しているsendメソッドを実行する
-    send '#team-mezamashi', "@here そろそろ帰る準備をしよう"
-  ).start()
+
 
   # #your_channelと言う部屋に、平日の13:00時に実行
   new cronJob('13 * * * * *', () ->
