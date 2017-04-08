@@ -26,15 +26,11 @@ module.exports = function(robot) {
   // task.start();
 
 
-  var job = new cronJob({
-    cronTime: '*/10 * * * * *',
-    onTick: function() {
+  new cronJob('*/10 * * * * *', function() {
       robot.send("@here Test");
-    },
-    start: false
-    // timeZone: 'Japan/Tokyo'
-  });
-  job.start();
+    }, null, true, 'Japan/Tokyo'
+  );
+  // job.start();
 
   // robot.hear(/(.+)\s*--$/i, function(msg) {
   //   var user = msg.match[1].trim();
