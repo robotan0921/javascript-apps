@@ -9,7 +9,7 @@ snooze = 1
 module.exports = (robot) ->
 
 
-  # 特定のチャンネルへ送信するメソッド(定期実行時に呼ばれる)　
+
   send = (channel, msg) ->
     robot.send {room: channel}, msg
 
@@ -19,11 +19,11 @@ module.exports = (robot) ->
     min = match[2]
     hour = match[1]
     jobAlarm = new cronJob("00 #{min} #{hour} * * *", () ->
-      send '#team-mezamashi', "@here そろそろ帰る準備をしよう"
+      send '#team-mezamashi', "起きろ"
       jobSnooze = new cronJob('00 * * * * *', () ->
         count++
         if count > snooze
-          send '#team-mezamashi', "@channel Wake me up!!"
+          send '#team-mezamashi', "@channel 起こしてくーださい"
       ).start()
     ).start()
     send '#team-mezamashi', "match:#{match}"
