@@ -17,26 +17,14 @@ module.exports = function(robot) {
     setTime(time);
 
     msg.send(" 目覚ましを " + time + " にセットしました ");
-    msg.send(" 目覚ましを " + time + " にセットしました ");
-    msg.send(" 目覚ましを " + time + " にセットしました ");
   });
 
-<<<<<<< HEAD
   var job = new cronJob({
     cronTime: {
       '*/10 * * * * *'
     },
     onTick: function() {
       robot.send("@here Test");
-=======
-
-  var job = new cronJob(
-    cronTime: {
-      "5 * * * * *"
-    },
-    onTick: function(msg) {
-      msg.send("@here Test");
->>>>>>> 36644609472b4c302f08cd7f8d3fd2beab8dac4b
     },
     // start: true, //newした後即時実行するかどうか
     // timeZone: 'Japan/Tokyo'
