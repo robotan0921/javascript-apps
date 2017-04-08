@@ -15,7 +15,7 @@ module.exports = function(robot) {
     // var time = msg.match[2].trim();
 
     // msg.send(" 目覚ましを " + time + " にセットしました");
-    msg.send(" 目覚ましを にセットしました");
+    msg.send(" 目覚ましを " + msg + "にセットしました");
   });
 
   robot.hear(/(.+)\s*--$/i, function(msg) {
