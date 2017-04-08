@@ -2,8 +2,7 @@
 cronJob = require('cron').CronJob
 
 module.exports = (robot) ->
-  hour = ""
-  min = ""
+
 
   # 特定のチャンネルへ送信するメソッド(定期実行時に呼ばれる)　
   send = (channel, msg) ->
@@ -12,8 +11,8 @@ module.exports = (robot) ->
 
   setTime = (time) ->
     match = /(\d+)\D+(\d+)/.exec(time)
-    min = match[2]
-    hour = match[1]
+    robot.brain.data[min] = match[2]
+    robot.brain.data[hour] = match[1]
     send '#team-mezamashi', "match:#{match}"
     send '#team-mezamashi', "hour:#{hour}, min:#{min}"
 
@@ -26,7 +25,7 @@ module.exports = (robot) ->
 
   # Crontabの設定方法と基本一緒 *(sec) *(min) *(hour) *(day) *(month) *(day of the week)
   # #your_channelと言う部屋に、平日の18:30時に実行
-  new cronJob('00 min hour * * *', () ->
+  new cronJob('00 robot.brain.data[min] robot.brain.data[hour] * * *', () ->
     # ↑のほうで宣言しているsendメソッドを実行する
     send '#team-mezamashi', "@here そろそろ帰る準備をしよう"
   ).start()
