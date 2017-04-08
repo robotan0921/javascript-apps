@@ -21,7 +21,7 @@ module.exports = (robot) ->
     send '#team-mezamashi', "hour:#{hour}, min:#{min}"
 
 
-  robot.hear /set\s*(\d[:]\d\d)$/i, (msg) ->
+  robot.hear /set\s*([\d|\d\d][:]\d\d)$/i, (msg) ->
     time = msg.match[1].trim()
     setTime time
     send '#team-mezamashi', " 目覚ましを " + time + " にセットしました "
