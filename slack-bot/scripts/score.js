@@ -24,7 +24,7 @@ module.exports = function(robot) {
     onTick: function() {
       robot.send("@here Test");
     },
-    // start: true, //newした後即時実行するかどうか
+    start: false
     // timeZone: 'Japan/Tokyo'
   });
   job.start();
