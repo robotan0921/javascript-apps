@@ -20,9 +20,11 @@ module.exports = function(robot) {
   });
 
   var job = new cronJob({
-    cronTime: '*/10 * * * * *',
+    cronTime: {
+      '*/10 * * * * *'
+    },
     onTick: function() {
-      send("@here Test");
+      robot.send("@here Test");
     },
     // start: true, //newした後即時実行するかどうか
     // timeZone: 'Japan/Tokyo'
