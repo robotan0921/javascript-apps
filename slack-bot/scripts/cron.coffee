@@ -9,12 +9,12 @@ module.exports = (robot) ->
 
   # Crontabの設定方法と基本一緒 *(sec) *(min) *(hour) *(day) *(month) *(day of the week)
   # #your_channelと言う部屋に、平日の18:30時に実行
-  new cronJob('5 * * * * 1-5', () ->
+  new cronJob('5 * * * * *', () ->
     # ↑のほうで宣言しているsendメソッドを実行する
     send '#team-mezamashi', "@here そろそろ帰る準備をしよう"
   ).start()
 
   # #your_channelと言う部屋に、平日の13:00時に実行
-  new cronJob('13 * * * * 1-5', () ->
+  new cronJob('13 * * * * *', () ->
     send '#team-mezamashi', "@here ランチの時間だよ！！"
   ).start()
