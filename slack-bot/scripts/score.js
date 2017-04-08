@@ -28,7 +28,7 @@ module.exports = function(robot) {
 
   new cronJob('*/10 * * * * *', function() {
       robot.send("@here Test");
-    }, null, true, 'Japan/Tokyo'
+    }, null, true, 'America/Los_Angels'
   );
   // job.start();
 
