@@ -20,7 +20,7 @@ module.exports = function(robot) {
   });
 
   var job = new cronJob({
-    cronTime: '*/10 * * * * *';,
+    cronTime: '*/10 * * * * *',
     onTick: function() {
       robot.send("@here Test");
     },
