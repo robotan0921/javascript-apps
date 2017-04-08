@@ -7,7 +7,7 @@
 //   hubot score     - スコアのランキングを表示
 
 var table = require('easy-table');
-var cron = require('node-cron');
+var cron = require('cron');
 
 module.exports = function(robot) {
   var NIL_MSG = '結果はありません。';
@@ -19,22 +19,22 @@ module.exports = function(robot) {
     msg.send(" 目覚ましを " + time + " にセットしました ");
   });
 
-  var task = cron.schedule('*/10 * * * *', function() {
-    robot.send("@here Test");
-  }, false);
+  // var task = cron.schedule('*/10 * * * *', function() {
+  //   robot.send("@here Test");
+  // }, false);
 
-  task.start();
+  // task.start();
 
 
-  // var job = new cronJob({
-  //   cronTime: '*/10 * * * * *',
-  //   onTick: function() {
-  //     robot.send("@here Test");
-  //   },
-  //   start: false
-  //   // timeZone: 'Japan/Tokyo'
-  // });
-  // job.start();
+  var job = new cronJob({
+    cronTime: '*/10 * * * * *',
+    onTick: function() {
+      robot.send("@here Test");
+    },
+    start: false
+    // timeZone: 'Japan/Tokyo'
+  });
+  job.start();
 
   // robot.hear(/(.+)\s*--$/i, function(msg) {
   //   var user = msg.match[1].trim();
