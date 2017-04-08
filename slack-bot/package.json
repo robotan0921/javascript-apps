@@ -18,7 +18,8 @@
     "easy-table": ">= 1.0.x",
     "hubot": ">= 2.19.x",
     "hubot-redis-brain": ">= 0.0.x",
-    "hubot-slack": ">= 4.2.x"
+    "hubot-slack": ">= 4.2.x",
+    "cron": "^1.1.0"
   },
   "devDependencies": {
     "coffee-script": ">= 1.11.x"
