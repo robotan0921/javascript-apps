@@ -7,15 +7,26 @@
 //   hubot score     - スコアのランキングを表示
 
 var table = require('easy-table');
+var cronJob = require('cron').CronJob;
 
 module.exports = function(robot) {
   var NIL_MSG = '結果はありません。';
 
   robot.hear(/set\s*(\d[:]\d\d)$/i, function(msg) {
     var time = msg.match[1].trim();
+    setTime(time);
 
     msg.send(" 目覚ましを " + time + " にセットしました ");
   });
+
+  var job = new cronJob(
+    cronTime: {
+      "5 * * * * *"
+    },
+    onTick: function(msg) {
+      msg.send("@here そろそろ帰る準備をしよう");
+    }
+  ).start();
 
   robot.hear(/(.+)\s*--$/i, function(msg) {
     var user = msg.match[1].trim();
@@ -64,8 +75,8 @@ module.exports = function(robot) {
     return scores != null ? scores : {};
   };
 
-  var setScore = function(user, score) {
-    var scores = getScores();
+  var setTime = function(time) {
+    var  = getScores();
 
     scores[user] = score;
     robot.brain.set('scores', scores);
