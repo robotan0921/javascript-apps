@@ -20,12 +20,13 @@ module.exports = function(robot) {
   });
 
   var job = new cronJob(
-    cronTime: {
-      "5 * * * * *"
-    },
+    cronTime: '*/10 * * * * *'
+    ,
     onTick: function(msg) {
       msg.send("@here そろそろ帰る準備をしよう");
-    }
+    },
+    start: true, //newした後即時実行するかどうか
+    timeZone: 'Japan/Tokyo'
   ).start();
 
   robot.hear(/(.+)\s*--$/i, function(msg) {
