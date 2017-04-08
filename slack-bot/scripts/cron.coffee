@@ -26,8 +26,6 @@ module.exports = (robot) ->
           send '#team-mezamashi', "@channel 起こしてくーださい"
       ).start()
     ).start()
-    send '#team-mezamashi', "match:#{match}"
-    send '#team-mezamashi', "hour:#{hour}, min:#{min}"
 
 
   robot.hear /set\s*([0-2][0-9][:][0-5][0-9])$/i, (msg) ->
@@ -38,6 +36,6 @@ module.exports = (robot) ->
 
   robot.hear /wake$/i, (msg) ->
     jobAlarm.stop()
-    jobSnooze.stop();
+    jobSnooze.stop()
     send '#team-mezamashi', " 目覚ましを止めました "
 
